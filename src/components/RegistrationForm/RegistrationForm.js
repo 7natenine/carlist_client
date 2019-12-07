@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Input, Required } from '../Utils/Utils'
 
-export default class LoginForm extends Components { 
+export default class LoginForm extends Component { 
   static defaultProps = { 
     onRegistrationSuccess: () => {}
   }
@@ -10,10 +10,10 @@ export default class LoginForm extends Components {
 
   handleSubmit = ev => { 
     ev.preventDefault()
-    const { full_name, user_name, password, email, phone_number } = ev.target
+    const { full_name, username, password, email, phone_number } = ev.target
 
     full_name.value = ''
-    user_name.value = ''
+    username.value = ''
     password.value = ''
     email.value = ''
     phone_number.value = ''
@@ -41,15 +41,15 @@ export default class LoginForm extends Components {
             id ='RegistrationForm_full_name'>
           </Input>
         </div> 
-        <div className ='user_name'>
-          <label htmlFor='RegistrationForm_user_name'> 
+        <div className ='username'>
+          <label htmlFor='RegistrationForm_username'> 
           User name <Required /> 
           </label> 
           <Input 
-            name='user_name'
+            name='username'
             type='text'
             required 
-            id = 'RegistrationForm_user_name'> 
+            id = 'RegistrationForm_username'> 
           </Input>
         </div> 
         <div className = 'password'> 

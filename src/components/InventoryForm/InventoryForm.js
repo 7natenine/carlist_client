@@ -4,27 +4,46 @@ import { NiceDate, Hyph } from '../Utils/Utils'
 // add css 
 // add icons
 
-export default class InventoryForm extends Components { 
+export default class InventoryForm extends Component {
   render() {
-    const { article } = this.props
+    const { ad } = this.props
     return (
-      <Link to={'/ad/${ad.id}'} className='InventoryForm'> 
+      <Link to={`/ad/${ad.id}`} className='InventoryForm'> 
         <header className='InventoryForm_header'> 
           <h2 className='InventoryForm_heading'> 
-            {ad.title}
+            {ad.car_year}<Hyph />{ad.make}<Hyph />{ad.model}
           </h2> 
-          <AdDate ad= {ad} /> 
+          <img src={ad.photos_link} alt='car_pictures'/>  {/*check this*/}
+          <h3>
+            <p>$</p>{ad.price} <Hyph /> {ad.mileage}<p>mi</p>
+          </h3>
+          <h5>
+            {ad.content}
+          </h5>
         </header> 
-        <footer className='InventoryForm_footer'> 
-          <AdStyle ad = {ad} /> 
-          {ad.author.id && <> 
+        <footer>
+          <AdDate ad= {ad} /><Hyph />
+        </footer>
+        {/* <footer className='InventoryForm_footer'> 
+          {ad.id && <> 
             <Hyph /> 
             <AdCreator ad={ad} />
           </>}
-        </footer> 
+        </footer>  */}
       </Link>   
     )
   }
+}
+
+
+function AdDate({ ad }) {
+  return ( 
+    <span className='InventoryForm_date'> 
+      <NiceDate
+        date={ad.date_created}
+      />
+    </span> 
+  )
 }
 
 // function AdStyle({ ad }) { 
@@ -37,29 +56,19 @@ export default class InventoryForm extends Components {
 //   )
 // }
 
-function AdDate({ ad }) {
-  return ( 
-    <span className='InventoryForm_date'> 
-      <NiceDate
-        date={ad.date_created}
-      />
-    </span> 
-  )
-}
-
-function AdCreator({ ad }) {
-  return ( 
-    <span className='InventoryForm_creator'>
-      {ad.author.full_name}
-    </span> 
-  )
-}
+// function AdCreator({ ad }) {
+//   return ( 
+//     <span className='InventoryForm_creator'>
+//       {ad.author.full_name}
+//     </span> 
+//   )
+// }
 
 
-// EDIT THIS 
-function AdPhoto({ ad }) { 
-  return (
-    <img src={ad.image.src} alt={ad.image.alt}/>
-  )
-}
+// Implement this
+// function AdPhoto({ ad }) { 
+//   return (
+//     <img src={ad.image.src} alt={ad.image.alt}/>
+//   )
+// }
 

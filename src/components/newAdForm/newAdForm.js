@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { Button, Textarea, InputFile, Input } from '../Utils/Utils'
+import { Button, TextArea, Input, Required } from '../Utils/Utils'
 
-export default class newAdForm extends Component { 
-  static contextType = AdContext
+export default class NewAdForm extends Component { 
 
   state = { 
     selectedFile: null,
@@ -17,10 +16,17 @@ export default class newAdForm extends Component {
     })
   }
 
-  onSubmithandler = event => { 
-    // this.setState({ 
-    //    
-    // })
+  onSubmithandler = ev => { 
+    const { brand, model, car_year, photos_link, price, description, image } = ev.target
+
+    brand.value = ''
+    model.value = ''
+    car_year.value = ''
+    photos_link.value = ''
+    price.value = ''
+    description.value = ''
+    image.value = ''
+    this.props.onNewAdSuccess()
   }
 
   fileUploadHandler = event => { 
@@ -35,30 +41,64 @@ export default class newAdForm extends Component {
     return (
       <form 
         className='adForm'
+        onSubmit= {this.onSubmithandler}
       >
         <div className='brand'> 
-          <Input type='text' onSubmit={this.onSubmitHandler}>
-            Brand:
+          <label htmlFor='NewAdFormBrand'>
+            Brand: <Required />
+          </label>
+          <Input 
+          name='brand' 
+          type='text'
+          required
+          id = 'NewAdFormBrand'>
           </Input>
         </div>
         <div className='model'> 
-          <Input type='text' onSubmit={this.onSubmitHandler}>
-            Model: 
+          <label htmlFor='NewAdFormModel'>
+            Model: <Required/> 
+          </label>
+          <Input 
+            name='model'
+            type='text'
+            required
+            id = 'NewAdFormModel'> 
           </Input>
         </div>
-        <div className='year'> 
-          <Input type='text' pattern="[0-9]{4}" onSubmit={this.onSubmitHandler}>
-            Year:(ex. 2019)
+        <div className='car_year'>
+          <label htmlFor='NewAdFormYear'>
+            Year:(ex.2019)<Required/>
+          </label> 
+          <Input 
+            name='model '
+            type='number' 
+            pattern="[0-9]{4}" >
+          </Input>
+        </div>
+        <div className='price'> 
+          <label htmlFor='NewAdFormPrice'>
+            Price: <Required/>
+          </label>
+          <Input 
+            name='price'
+            type='number'
+            required
+            id='NewAdFormPrice'>
           </Input>
         </div>
         <div className='description'>
-          <Textarea type='text' onSubmite={this.onSubmitHandler}>
-            Description: 
-          </Textarea>
+          <label htmlFor='NewAdFormDescription'>
+            Description: <Required/>
+          </label>
+          <TextArea 
+            name='description'
+            type='text'
+            required>
+          </TextArea>
         </div>
-        <div className='image'>
+        {/* <div className='image'>
+          <label>
           <InputFile type='file' onChange={this.fileSelectedHandler}>
-            Add Image 
           </InputFile>
           <Button onClick={this.fileUploadHandler}>
             Upload
@@ -66,6 +106,20 @@ export default class newAdForm extends Component {
           <Button onClick={this.cancelHandler}>
             Cancel
           </Button>
+          <Button onClick={this.cancelHandler}>
+            Submit
+          </Button>
+        </div> */}
+        <div className='photos_link'> 
+          <label htmlFor='NewAdFormImages'>
+            Image Urls: <Required/> 
+          </label>
+          <TextArea 
+            name='photos_link'
+            type='text'>
+          </TextArea>
+        </div>
+        <div className='submitButton'>
           <Button onClick={this.cancelHandler}>
             Submit
           </Button>

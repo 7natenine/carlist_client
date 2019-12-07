@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AccountForm from '../../components/AccountForm/Form'
+import AccountForm from '../../components/AccountForm/AccountForm'
 import { Section } from '../../components/Utils/Utils'
 
 // If logged in you can accesss your listings and Information

@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import AdContext, { nullAd } from '../../contexts/AdContext'
 import AdApiService from '../../services/ad-api-service'
 import { NiceDate, Hyph, Section } from '../../components/Utils/Utils'
-import StyleIcon from '../../components/StyleIcon/StyleIcon'
-import './AdPage.css'
+// import './AdPage.css'
 
 export default class AdPage extends Component {
   static defaultProps = {
@@ -31,7 +29,6 @@ export default class AdPage extends Component {
     return <>
       <h2>{ad.title}</h2>
       <p>
-        <AdStyle ad={ad} />
         {ad.creator.id && <>
           <Hyph />
           <AdCreator ad={ad} />
@@ -78,5 +75,4 @@ function AdContent({ ad }) {
     </p>
   )
 }
-
 

@@ -3,33 +3,33 @@ import React, { Component } from 'react'
 export default class HomeForm extends Component { 
   render() {
     return(
-      <div class="new-mark">
+      <div className="new-mark">
 				<select id="Brand" name='brand'>
-            <option value="" selected disabled hidden>Select Brand</option>
-            <option class="filter-toggle" value="audi" >Audi</option>
-            <option class="filter-toggle" value="bmw">BMW</option>
-            <option class="filter-toggle" value="Chevrolet">Chevrolet</option>
-            <option class="filter-toggle" value="Dodge">Dodge</option>
+            <option value="DEFAULT" selected disabled hidden>Select Brand</option>
+            <option className="filter-toggle" value="audi" >Audi</option>
+            <option className="filter-toggle" value="bmw">BMW</option>
+            <option className="filter-toggle" value="Chevrolet">Chevrolet</option>
+            <option className="filter-toggle" value="Dodge">Dodge</option>
           </select>
           <select id="Model" name='Model'>
             <option value="" selected disabled hidden>Select model</option>
-            <option class="filter-toggle" value="A4" >A4</option>
-            <option class="filter-toggle" value="A3">A3</option>
-            <option class="filter-toggle" value="A5">A5</option>
-            <option class="filter-toggle" value="M3">M3</option>
-            <option class="filter-toggle" value="Corvette">Corvette</option>
-            <option class="filter-toggle" value="Viper">Viper</option>
+            <option className="filter-toggle" value="A4" >A4</option>
+            <option className="filter-toggle" value="A3">A3</option>
+            <option className="filter-toggle" value="A5">A5</option>
+            <option className="filter-toggle" value="M3">M3</option>
+            <option className="filter-toggle" value="Corvette">Corvette</option>
+            <option className="filter-toggle" value="Viper">Viper</option>
           </select>
-          <select id="Year" name='Year'>
+          <select id="car_year" name='car_year'>
             <option value="" selected disabled hidden>Select year</option>
-            <option class="filter-toggle" value="2019" >2019</option>
-            <option class="filter-toggle" value="2018">2018</option>
-            <option class="filter-toggle" value="2017">2017</option>
-            <option class="filter-toggle" value="2016">2016</option>
-            <option class="filter-toggle" value="2015">2015</option>
-            <option class="filter-toggle" value="2014">2014</option>
+            <option className="filter-toggle" value="2019" >2019</option>
+            <option className="filter-toggle" value="2018">2018</option>
+            <option className="filter-toggle" value="2017">2017</option>
+            <option className="filter-toggle" value="2016">2016</option>
+            <option className="filter-toggle" value="2015">2015</option>
+            <option className="filter-toggle" value="2014">2014</option>
           </select>
-        <button class="search-car" type ="button">Search</button> 
+        <button className="search-car" type ="button">Search</button> 
       </div>  
     )
 

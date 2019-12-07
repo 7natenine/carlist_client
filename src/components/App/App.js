@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import './App.css';
 import Header from '../Header/Header'
 import HomePage from '../../routes/HomePage/HomePage'
 import LoginPage from '../../routes/LoginPage/LoginPage'
-import RegistrationPage
-import InventoryPage
-import SearchPage
-import MyAccount
+import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage'
+import InventoryPage from '../../routes/InventoryPage/InventoryPage'
+import AccountPage from '../../routes/AccountPage/AccountPage'
+import NewAdPage from '../../routes/NewAdPage/NewAdPage'
+import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
 
 class App extends Component { 
   state = { hasError: false }
@@ -40,20 +41,20 @@ class App extends Component {
               component={RegistrationPage}
             />
             <Route
-              path={'/inventory'}
+              path={'/ads'}
               component={InventoryPage}
             />
             <Route
-              path={'/search'}
-              component={SearchPage}
+              path={'/new-post'}
+              component={NewAdPage}
             />
             <Route
               path={'/my-account'}
-              component={MyAccount}
+              component={AccountPage}
             />
             <Route
               path={'/ad/:adId'}
-              component={AdPage}
+              component={NewAdPage}
             />
             <Route
               component={NotFoundPage}

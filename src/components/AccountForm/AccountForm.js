@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Input, Section, Image, InputFile } from '../Utils/Utils'
+import { Button, Input, Section, Image} from '../Utils/Utils'
 
 /* 
 // section 1 
@@ -19,6 +19,7 @@ import { Button, Input, Section, Image, InputFile } from '../Utils/Utils'
 // section 3
 // Label and button for edit username
 // Label and button for edit password
+// - Add current username as placeholder
 */
 
 
@@ -33,8 +34,8 @@ export default class AccountForm extends Component {
         <div className='user-info'>
           <h2>Welcome "username"</h2>
           <Image src='' className='user-image'></Image>
-          <InputFile type="file" name="carImage" accept=".png,.jpg,.jpeg">
-          </InputFile>
+          <Input type="file" name="carImage" accept=".png,.jpg,.jpeg">
+          </Input>
           <Input type="submit" className="photoSubmit" value="Submit"/>
           <Input type="reset" className="photoReset" value="Reset"/>
         </div>
@@ -46,7 +47,7 @@ export default class AccountForm extends Component {
         </div> 
         <div className='settings'>
           <h3>Change username</h3>
-          <Input type="text" className="userName-edit" placeholder={}/>
+          <Input type="text" className="userName-edit"/>
           <Button type="submit">
             Submit
           </Button>

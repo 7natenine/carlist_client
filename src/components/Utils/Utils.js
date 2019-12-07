@@ -1,9 +1,9 @@
 import React from 'react'
-import { format as formatDate } from 'date-fns'
-import './Utils.css'
+import { parseISO, format as formatDate } from 'date-fns'
+// import './Utils.css'
 
-export function NiceDate({ date, format='Do MMMM YYYY'}) {
-  return formatDate(date, format)
+export function NiceDate({ date, format='do MMMM yyyy' }) {
+  return formatDate(parseISO(date), format)
 }
 
 export function Hyph() {
@@ -16,7 +16,7 @@ export function Button({ className, ...props }) {
 
 export function Input({ className, ...props }) {
   return (
-    <input className={['Input', className].join(' ')}{...props}/> 
+    <input className={['Input', className].join(' ')} {...props} />
   )
 }
 
@@ -34,17 +34,17 @@ export function TextArea({ className, ...props}) {
   )
 }
 
-export function InputFile ({ className, ...props }) {
-  return(
-    <input className={['file', className].join(' ')} {...props}> 
-    </input>
-  )
-}
+// export function InputFile ({ className, ...props }) {
+//   return(
+//     <input className={['file', className].join(' ')} {...props}> 
+//     </input>
+//   )
+// }
 
 // Check if this works 
 export function Image ({ src, className, ...props }) { 
   return(
-    <img src={src} className={['image', className].join(' ')} {...props}>
+    <img src={src} className={['image', className].join(' ')} {...props} alt='change this'>
     </img>
   )
 }
