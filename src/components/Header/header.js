@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom' 
 // import './Header.css'
 import TokenService from '../../services/token-service'
-import { Hyph, Input } from '../Utils/Utils'
+import { Hyph } from '../Utils/Utils'
 
 
 export default class Header extends Component { 

@@ -20,7 +20,7 @@ export default class InventoryPage extends Component {
 // check this.context.adList
   renderAds() {
     const { adList = [] } = this.context
-    console.log(adList)
+    // console.log(adList)
     return adList.map ( ad =>
       <InventoryForm
         key={ad.id}

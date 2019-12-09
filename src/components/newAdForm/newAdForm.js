@@ -1,41 +1,48 @@
 import React, { Component } from 'react'
 import { Button, TextArea, Input, Required } from '../Utils/Utils'
+import { Link } from 'react-router-dom'
+import AdApiService from '../../services/ad-api-service'
 
 export default class NewAdForm extends Component { 
 
   state = { 
-    selectedFile: null,
-    Brand: null,
-    Model: null, 
-    year: null 
+    brand: null,
+    model: null, 
+    car_year: null,
+    photos_link: null, 
+    price: null, 
+    description: null, 
+    name: null, 
+    phone: null, 
+    mail: null
   }
 
-  fileSelectedHandler = event => { 
-    this.setState({ 
-      selectedFile: event.target.files[0]
-    })
-  }
+  // fileSelectedHandler = event => { 
+  //   this.setState({ 
+  //     selectedFile: event.target.files[0]
+  //   })
+  // }
 
   onSubmithandler = ev => { 
-    const { brand, model, car_year, photos_link, price, description, image } = ev.target
-
-    brand.value = ''
-    model.value = ''
-    car_year.value = ''
-    photos_link.value = ''
-    price.value = ''
-    description.value = ''
-    image.value = ''
-    this.props.onNewAdSuccess()
+    ev.preventDefault()
+    const { brand, model, car_year, photos_link, price, description, name, phone, mail} = ev.target
+    console.log(brand, model, car_year, photos_link, price, description, name, phone, mail)
+    AdApiService.postAd(brand.value, model.value, car_year.value, photos_link.value, price.value, 
+      description.value, name.value, phone.value, mail.value)
+    .then(() => {
+      brand.value = ''
+      model.value = ''
+      car_year.value = ''
+      photos_link.value = ''
+      price.value = ''
+      description.value = ''
+      name.value = ''
+      phone.value = ''
+      mail.value = ''
+    })
+    // .catch(this.)
   }
 
-  fileUploadHandler = event => { 
-    //upload to database 
-  }
-
-  cancelHandler = event => { 
-    //route to homepage
-  }
 
   render() {
     return (
@@ -70,7 +77,7 @@ export default class NewAdForm extends Component {
             Year:(ex.2019)<Required/>
           </label> 
           <Input 
-            name='model '
+            name='car_year '
             type='number' 
             pattern="[0-9]{4}" >
           </Input>
@@ -119,10 +126,50 @@ export default class NewAdForm extends Component {
             type='text'>
           </TextArea>
         </div>
+        <div className='contact-info'>
+          <label htmlFor='NewAdFormName'>
+            Name: <Required/> 
+          </label>
+          <Input 
+            name='name'
+            type='text'
+            required
+            id='NewAdFormName'>
+          </Input>     
+        </div>
+        <div className='contact-info'>
+          <label htmlFor='NewAdFormName'>
+            Phone: <Required/> 
+          </label>
+          <Input 
+            name='phone'
+            type='number'
+            
+            id='NewAdFormName'>
+          </Input>     
+        </div>
+        <div className='contact-info'>
+          <label htmlFor='NewAdFormName'>
+            Mail: <Required/> 
+          </label>
+          <Input 
+            name='mail'
+            type='text'
+            required
+            id='NewAdFormName'>
+          </Input>     
+        </div>
         <div className='submitButton'>
-          <Button onClick={this.cancelHandler}>
+          <Button onSubmit={this.sumitHandler}>
             Submit
           </Button>
+        </div>
+        <div className='cancelButton'>
+          <Link to="/">
+            <Button onClick={this.cancelHandler}>
+              Cancel
+            </Button>
+          </Link>
         </div>
       </form>
       

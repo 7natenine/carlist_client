@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { NiceDate, Hyph } from '../Utils/Utils'
 // add css 
 // add icons
@@ -8,29 +8,26 @@ export default class InventoryForm extends Component {
   render() {
     const { ad } = this.props
     return (
-      <Link to={`/ad/${ad.id}`} className='InventoryForm'> 
+      // <Link to={`/ad/${ad.id}`} className='InventoryForm'> 
+      <div>
         <header className='InventoryForm_header'> 
+          <p><AdDate ad= {ad} /></p>
           <h2 className='InventoryForm_heading'> 
             {ad.car_year}<Hyph />{ad.make}<Hyph />{ad.model}
           </h2> 
-          <img src={ad.photos_link} alt='car_pictures'/>  {/*check this*/}
+          <img src={ad.photos_link} alt='pictures'/>  {/*check this*/}
           <h3>
             <p>$</p>{ad.price} <Hyph /> {ad.mileage}<p>mi</p>
           </h3>
           <h5>
             {ad.content}
           </h5>
-        </header> 
+        </header>
         <footer>
-          <AdDate ad= {ad} /><Hyph />
+          <AdCreator ad={ad}/>
         </footer>
-        {/* <footer className='InventoryForm_footer'> 
-          {ad.id && <> 
-            <Hyph /> 
-            <AdCreator ad={ad} />
-          </>}
-        </footer>  */}
-      </Link>   
+      </div>
+      // </Link>   
     )
   }
 }
@@ -46,23 +43,16 @@ function AdDate({ ad }) {
   )
 }
 
-// function AdStyle({ ad }) { 
-//   return ( 
-//     <span className='InventoryForm_style'> 
-//       <StyleIcon style={ad.style} /> 
-//       {' '}
-//       {ad.style}
-//     </span> 
-//   )
-// }
 
-// function AdCreator({ ad }) {
-//   return ( 
-//     <span className='InventoryForm_creator'>
-//       {ad.author.full_name}
-//     </span> 
-//   )
-// }
+function AdCreator({ ad }) {
+  return ( 
+    <span className='InventoryForm_creator'>
+      <h5>Contact Information:</h5>
+      {ad.author.full_name}<Hyph />{ad.author.email}<Hyph /> 
+      {ad.author.phone} 
+    </span> 
+  )
+}
 
 
 // Implement this
